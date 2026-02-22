@@ -4,7 +4,7 @@ Environments let you define sets of variables (like `base_url`, `api_key`) and s
 
 ### Creating & Activating
 
-Create environments from the sidebar's **Environments** panel. Activate one using the **environment selector** dropdown in the tab bar. Only one environment can be active at a time per workspace. Activating an environment automatically deactivates the previous one.
+Create environments from the sidebar's **Environments** panel. Activate one by clicking its name in the sidebar list, or using the **environment selector** dropdown in the tab bar. Only one environment can be active at a time per workspace. Clicking an already-active environment deactivates it.
 
 Each variable row has a checkbox to enable or disable it individually without deleting.
 
