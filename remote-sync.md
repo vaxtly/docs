@@ -83,7 +83,7 @@ Vaxtly supports **GitHub Enterprise Server** and **self-hosted GitLab** instance
 | GitHub Enterprise | `https://github.company.com` | `https://github.company.com/api/v3` |
 | Self-hosted GitLab | `https://gitlab.company.com` | `https://gitlab.company.com/api/v4` |
 
-Leave the field empty to use the public cloud (github.com or gitlab.com). The API path suffix is added automatically.
+Leave the field empty to use the public cloud (github.com or gitlab.com). The API path suffix is added automatically. If you accidentally enter `https://github.com` or `https://gitlab.com`, Vaxtly will recognize them and use the correct public API — no need to clear the field.
 
 > [!TIP]
 > Token setup for self-hosted instances is the same as for the cloud versions — just create the token on your own instance instead of github.com/gitlab.com.
