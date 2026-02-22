@@ -59,7 +59,7 @@ Before pushing, Vaxtly scans your collection for potentially sensitive data in h
 If findings are detected, a modal shows each finding grouped by request, with the key name and a masked preview of the value (first 4 characters visible). You have three choices:
 
 - **Cancel** — don't push
-- **Sync without values** — sanitize the sensitive values before pushing (replaces them with empty strings, but preserves `<span v-pre>{{variable}}</span>` references)
+- **Sync without values** — sanitize the sensitive values before pushing (replaces them with empty strings, but preserves <code v-pre>{{variable}}</code> references)
 - **Sync Anyway** — push as-is, including the sensitive data
 
 ### Auto Sync
@@ -67,4 +67,4 @@ If findings are detected, a modal shows each finding grouped by request, with th
 Enable **Auto Sync** in Settings → Remote Sync to automatically pull on application startup and push after saving. Errors during auto-sync are logged to the session log and shown as toast notifications.
 
 > [!TIP]
-> **Tip:** Use environment variables (`<span v-pre>{{api_key}}</span>`) in your requests instead of hardcoded values. The sensitive data scanner won't flag variable references, and the actual values stay in your local environments.
+> **Tip:** Use environment variables (<code v-pre>{{api_key}}</code>) in your requests instead of hardcoded values. The sensitive data scanner won't flag variable references, and the actual values stay in your local environments.

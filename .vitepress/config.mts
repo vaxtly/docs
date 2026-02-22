@@ -15,8 +15,8 @@ export default defineConfig({
   appearance: 'dark',
 
   themeConfig: {
-    logo: '/logo.svg',
-    siteTitle: 'Vaxtly',
+    logo: { src: '/name.png', alt: 'Vaxtly' },
+    siteTitle: false,
 
     nav: [
       { text: 'Home', link: 'https://vaxtly.app' },

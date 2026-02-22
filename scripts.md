@@ -22,7 +22,7 @@ Each rule has two fields:
   - `status` — the HTTP status code as a string
 - **Target** — the collection variable name to store the value in
 
-Extracted values are sanitized: any `<span v-pre>{{varName}}</span>` patterns in the extracted value are stripped to prevent variable injection from malicious API responses.
+Extracted values are sanitized: any <code v-pre>{{varName}}</code> patterns in the extracted value are stripped to prevent variable injection from malicious API responses.
 
 If the active environment has a variable with the same name as the target, it's updated too (mirroring). This only updates existing variables — it won't create new ones in the environment.
 

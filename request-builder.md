@@ -6,7 +6,7 @@ The request builder is the main area for composing HTTP requests. It has five su
 
 At the top is the URL input with a **method selector** dropdown. Supported methods: GET, POST, PUT, PATCH, DELETE, HEAD, and OPTIONS. Each method is color-coded for quick identification.
 
-Environment variables (`<span v-pre>{{variable}}</span>`) in the URL are highlighted inline — green for resolved, red for unresolved. Hover over a highlighted variable to see its value and source.
+Environment variables (<code v-pre>{{variable}}</code>) in the URL are highlighted inline — green for resolved, red for unresolved. Hover over a highlighted variable to see its value and source.
 
 ### Sending & Cancelling
 

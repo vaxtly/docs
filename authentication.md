@@ -9,9 +9,9 @@ The Auth tab supports four authentication methods, selectable via buttons at the
 
 The selected auth method generates an implicit header shown in the Headers tab's "Auto-generated" section. If you add a manual `Authorization` header, it overrides the auto-generated one.
 
-All auth input fields support `<span v-pre>{{variable}}</span>` substitution with inline highlighting, so you can reference tokens stored in environments.
+All auth input fields support <code v-pre>{{variable}}</code> substitution with inline highlighting, so you can reference tokens stored in environments.
 
 Auth credentials are **encrypted at rest** using AES-256-CBC. Tokens and passwords stored in the database use an `enc:` prefix and are decrypted transparently when read.
 
 > [!NOTE]
-> **Note:** Environment variables (`<span v-pre>{{token}}</span>`) work in all auth fields, so you can store sensitive tokens in environments and reference them here.
+> **Note:** Environment variables (<code v-pre>{{token}}</code>) work in all auth fields, so you can store sensitive tokens in environments and reference them here.

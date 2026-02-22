@@ -17,4 +17,4 @@ Query parameters and the URL are synchronized bidirectionally. Editing a paramet
 
 ### Environment Variables
 
-Use `<span v-pre>{{variable}}</span>` syntax in any header or param key or value. Variables are highlighted inline — green when resolved, red when unresolved. Hover to see the resolved value and its source (e.g., "Env: Production" or "Collection").
+Use <code v-pre>{{variable}}</code> syntax in any header or param key or value. Variables are highlighted inline — green when resolved, red when unresolved. Hover to see the resolved value and its source (e.g., "Env: Production" or "Collection").

@@ -71,9 +71,25 @@ kbd {
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
+/* Nav logo sizing */
+.VPNavBarTitle .logo {
+  height: 22px;
+  width: auto;
+}
+
 /* Nav: glass blur matching landing */
 .VPNav {
   backdrop-filter: blur(20px) saturate(1.2) !important;
+}
+
+/* Search button — prevent shrinking */
+.VPNavBarSearch {
+  flex-shrink: 0;
+}
+
+.VPNavBarSearch .DocSearch-Button,
+.VPNavBarSearch button {
+  min-width: 200px;
 }
 
 /* Sidebar active item uses brand color */
