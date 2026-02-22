@@ -10,7 +10,7 @@ hero:
       link: /getting-started
     - theme: alt
       text: Download Vaxtly
-      link: https://vaxtly.app/#download
+      link: /installation
 features:
   - title: Collections & Environments
     details: Organize requests in nested folders with environment variables for each workspace.

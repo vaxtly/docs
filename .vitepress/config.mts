@@ -20,13 +20,14 @@ export default defineConfig({
 
     nav: [
       { text: 'Features', link: 'https://vaxtly.app/#features' },
-      { text: 'Download', link: 'https://vaxtly.app/#download-install' }
+      { text: 'Download', link: '/installation' }
     ],
 
     sidebar: [
       {
         text: 'Guide',
         items: [
+          { text: 'Installation', link: '/installation' },
           { text: 'Getting Started', link: '/getting-started' },
           { text: 'Collections & Folders', link: '/collections-folders' },
           { text: 'Request Builder', link: '/request-builder' },
