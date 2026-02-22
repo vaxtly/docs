@@ -19,8 +19,8 @@ export default defineConfig({
     siteTitle: false,
 
     nav: [
-      { text: 'Home', link: 'https://vaxtly.app' },
-      { text: 'Download', link: 'https://vaxtly.app/#download' }
+      { text: 'Features', link: 'https://vaxtly.app/#features' },
+      { text: 'Download', link: 'https://vaxtly.app/#download-install' }
     ],
 
     sidebar: [

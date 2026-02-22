@@ -71,15 +71,47 @@ kbd {
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
+/* Nav height — match landing page (16px padding * 2 + 28px logo = 60px) */
+:root {
+  --vp-nav-height: 60px;
+}
+
 /* Nav logo sizing */
 .VPNavBarTitle .logo {
   height: 22px;
   width: auto;
 }
 
-/* Nav: glass blur matching landing */
+/* Remove sidebar title bottom border (full-width divider handles it) */
+@media (min-width: 960px) {
+  .VPNavBarTitle.has-sidebar .title {
+    border-bottom-color: transparent !important;
+  }
+}
+
+/* Nav: glass blur + border matching landing */
 .VPNav {
   backdrop-filter: blur(20px) saturate(1.2) !important;
+}
+
+/* Nav links — match landing style */
+.VPNavBarMenu .VPNavBarMenuLink {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: var(--vp-c-text-3) !important;
+}
+
+.VPNavBarMenu .VPNavBarMenuLink:hover {
+  color: var(--vp-c-text-1) !important;
+}
+
+/* Social link icon — match landing GitHub button */
+.VPNavBarSocialLinks .VPSocialLink {
+  color: var(--vp-c-text-2);
+}
+
+.VPNavBarSocialLinks .VPSocialLink:hover {
+  color: var(--vp-c-text-1);
 }
 
 /* Search button — fill the nav space between sidebar and menu, with right padding */
