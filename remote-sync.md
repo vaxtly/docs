@@ -65,13 +65,12 @@ You need a **Personal Access Token** with read/write access to the repository.
 
 Alternatively, the **`api`** scope covers everything but grants broader access than necessary.
 
-#### Self-hosted GitLab
-
-Vaxtly connects to `gitlab.com` by default. For self-hosted GitLab instances, enter your instance URL in the **GitLab URL** field (e.g., `https://gitlab.company.com`). The token setup is the same.
-
 #### Repository format
 
-Use the **numeric project ID** or the `namespace/project` path as the repository value. You can find the project ID on the project's main page in GitLab, just below the project name.
+Enter the **namespace/project** path (e.g., `myorg/api-collections`) or the **numeric project ID** as the repository value. Do not include `gitlab.com` — just the path portion. You can find the project ID on the project's main page in GitLab, just below the project name.
+
+> [!WARNING]
+> Vaxtly currently only supports **gitlab.com**. Self-hosted GitLab instances are not supported yet.
 
 Sync is **per-collection** — you choose which collections to sync by right-clicking a collection in the sidebar and toggling "Enable Sync." Collections that aren't sync-enabled are purely local.
 
