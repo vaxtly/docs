@@ -82,14 +82,17 @@ kbd {
   backdrop-filter: blur(20px) saturate(1.2) !important;
 }
 
-/* Search button — prevent shrinking */
-.VPNavBarSearch {
-  flex-shrink: 0;
-}
+/* Search button — ensure it fills the nav space */
+@media (min-width: 768px) {
+  .VPNavBarSearch {
+    flex-grow: 1 !important;
+    padding-left: 24px;
+  }
 
-.VPNavBarSearch .DocSearch-Button,
-.VPNavBarSearch button {
-  min-width: 200px;
+  .DocSearch-Button {
+    width: 100% !important;
+    max-width: 350px;
+  }
 }
 
 /* Sidebar active item uses brand color */
