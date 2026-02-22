@@ -82,16 +82,18 @@ kbd {
   backdrop-filter: blur(20px) saturate(1.2) !important;
 }
 
-/* Search button — ensure it fills the nav space */
+/* Search button — fill the nav space between sidebar and menu */
 @media (min-width: 768px) {
   .VPNavBarSearch {
     flex-grow: 1 !important;
-    padding-left: 24px;
   }
 
-  .DocSearch-Button {
+  .VPNavBarSearch #local-search {
+    width: 100%;
+  }
+
+  .VPNavBarSearch #local-search .DocSearch-Button {
     width: 100% !important;
-    max-width: 350px;
   }
 }
 
