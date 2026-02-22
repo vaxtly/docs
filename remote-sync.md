@@ -9,9 +9,69 @@ Go to **Settings → Remote Sync** and configure:
 - **Provider** — GitHub or GitLab
 - **Repository** — in `owner/repo` format (e.g., `myorg/api-collections`)
 - **Branch** — the Git branch to sync with (default: `main`)
-- **Personal Access Token** — a token with repository read/write permissions
+- **Personal Access Token** — a token with repository read/write permissions (see below)
 
 Click **Test Connection** to verify access before saving.
+
+---
+
+### GitHub Token Setup
+
+You need a **Personal Access Token** with read/write access to the repository. GitHub offers two token types:
+
+#### Fine-grained token (recommended)
+
+Fine-grained tokens let you scope access to specific repositories, which is more secure than classic tokens.
+
+1. Go to [github.com/settings/tokens?type=beta](https://github.com/settings/tokens?type=beta)
+2. Click **Generate new token**
+3. Give it a name (e.g., `Vaxtly Sync`)
+4. Set the expiration as needed
+5. Under **Repository access**, select **Only select repositories** and pick your sync repository
+6. Under **Permissions → Repository permissions**, set:
+   - **Contents** → **Read and write** (required — covers file operations, commits, refs, and trees)
+7. Click **Generate token** and copy it into Vaxtly
+
+That's the only permission needed. Fine-grained tokens don't have access to anything else by default.
+
+#### Classic token
+
+If you prefer a classic token or need to sync across many repositories:
+
+1. Go to [github.com/settings/tokens](https://github.com/settings/tokens)
+2. Click **Generate new token (classic)**
+3. Select the **`repo`** scope (full control of private repositories)
+4. Click **Generate token** and copy it into Vaxtly
+
+> [!TIP]
+> For public repositories, the `public_repo` scope is sufficient instead of the full `repo` scope.
+
+The repository can be private or public. If it doesn't exist yet, create it on GitHub first — Vaxtly won't create repositories for you.
+
+---
+
+### GitLab Token Setup
+
+You need a **Personal Access Token** with read/write access to the repository.
+
+1. Go to your GitLab instance → **Preferences → Access Tokens** (or [gitlab.com/-/user_settings/personal_access_tokens](https://gitlab.com/-/user_settings/personal_access_tokens) for gitlab.com)
+2. Click **Add new token**
+3. Give it a name (e.g., `Vaxtly Sync`)
+4. Set the expiration as needed
+5. Select the following scopes:
+   - **`read_repository`** — read files and list directory trees
+   - **`write_repository`** — create/update/delete files and create commits
+6. Click **Create personal access token** and copy it into Vaxtly
+
+Alternatively, the **`api`** scope covers everything but grants broader access than necessary.
+
+#### Self-hosted GitLab
+
+Vaxtly connects to `gitlab.com` by default. For self-hosted GitLab instances, enter your instance URL in the **GitLab URL** field (e.g., `https://gitlab.company.com`). The token setup is the same.
+
+#### Repository format
+
+Use the **numeric project ID** or the `namespace/project` path as the repository value. You can find the project ID on the project's main page in GitLab, just below the project name.
 
 Sync is **per-collection** — you choose which collections to sync by right-clicking a collection in the sidebar and toggling "Enable Sync." Collections that aren't sync-enabled are purely local.
 

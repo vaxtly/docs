@@ -16,7 +16,7 @@ Press <kbd>Cmd+N</kbd> (or <kbd>Ctrl+N</kbd> on Linux/Windows) to create a new r
 
 ### Saving
 
-Press <kbd>Cmd+S</kbd> to save. Sending a request also saves it automatically to the database. If the collection has remote sync enabled, saving also pushes changes to Git.
+Press <kbd>Cmd+S</kbd> (or <kbd>Ctrl+S</kbd> on Linux/Windows) to save. If the collection has remote sync enabled, saving also pushes changes to Git in the background.
 
 > [!TIP]
 > **Tip:** Use <kbd>Cmd+B</kbd> to toggle the sidebar for more screen space while working.
