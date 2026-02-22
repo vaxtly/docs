@@ -7,6 +7,7 @@ Sync your collections to a Git repository for backup, sharing, and version contr
 Go to **Settings → Remote Sync** and configure:
 
 - **Provider** — GitHub or GitLab
+- **Instance URL** — leave empty for github.com / gitlab.com, or enter your self-hosted instance URL (e.g., `https://github.company.com`)
 - **Repository** — in `owner/repo` format (e.g., `myorg/api-collections`)
 - **Branch** — the Git branch to sync with (default: `main`)
 - **Personal Access Token** — a token with repository read/write permissions (see below)
@@ -69,10 +70,23 @@ Alternatively, the **`api`** scope covers everything but grants broader access t
 
 Enter the **namespace/project** path (e.g., `myorg/api-collections`) or the **numeric project ID** as the repository value. Do not include `gitlab.com` — just the path portion. You can find the project ID on the project's main page in GitLab, just below the project name.
 
-> [!WARNING]
-> Vaxtly currently only supports **gitlab.com**. Self-hosted GitLab instances are not supported yet.
-
 Sync is **per-collection** — you choose which collections to sync by right-clicking a collection in the sidebar and toggling "Enable Sync." Collections that aren't sync-enabled are purely local.
+
+---
+
+### Self-Hosted Instances
+
+Vaxtly supports **GitHub Enterprise Server** and **self-hosted GitLab** instances. In **Settings → Remote Sync**, enter your instance's root URL in the **Instance URL** field — just the base URL, without any `/api` path suffix.
+
+| Provider | Instance URL example | API endpoint used |
+|----------|---------------------|-------------------|
+| GitHub Enterprise | `https://github.company.com` | `https://github.company.com/api/v3` |
+| Self-hosted GitLab | `https://gitlab.company.com` | `https://gitlab.company.com/api/v4` |
+
+Leave the field empty to use the public cloud (github.com or gitlab.com). The API path suffix is added automatically.
+
+> [!TIP]
+> Token setup for self-hosted instances is the same as for the cloud versions — just create the token on your own instance instead of github.com/gitlab.com.
 
 ---
 
