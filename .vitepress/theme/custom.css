@@ -82,10 +82,11 @@ kbd {
   backdrop-filter: blur(20px) saturate(1.2) !important;
 }
 
-/* Search button — fill the nav space between sidebar and menu */
+/* Search button — fill the nav space between sidebar and menu, with right padding */
 @media (min-width: 768px) {
   .VPNavBarSearch {
     flex-grow: 1 !important;
+    padding-right: 16px;
   }
 
   .VPNavBarSearch #local-search {
@@ -94,6 +95,13 @@ kbd {
 
   .VPNavBarSearch #local-search .DocSearch-Button {
     width: 100% !important;
+  }
+}
+
+/* Nav divider line — span full width without the sidebar gap */
+@media (min-width: 960px) {
+  .VPNavBar.has-sidebar .divider {
+    padding-left: 0 !important;
   }
 }
 
