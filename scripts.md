@@ -24,7 +24,9 @@ Each rule has two fields:
 
 Extracted values are sanitized: any <code v-pre>{{varName}}</code> patterns in the extracted value are stripped to prevent variable injection from malicious API responses.
 
-If the active environment has a variable with the same name as the target, it's updated too (mirroring). This only updates existing variables — it won't create new ones in the environment.
+If the active environment has a variable with the same name as the target, it's updated too (mirroring). This only updates existing variables — it won't create new ones in the environment. For vault-synced environments, the mirrored value is pushed to Vault automatically.
+
+If you have the environment tab open while sending a request, the variables update live — no need to close and reopen the tab.
 
 ### Script Chain Depth
 
