@@ -6,7 +6,7 @@ Environments let you define sets of variables (like `base_url`, `api_key`) and s
 
 Create environments from the sidebar's **Environments** panel. Activate one by clicking its name in the sidebar list, or using the **environment selector** dropdown in the tab bar. Only one environment can be active at a time per workspace. Clicking an already-active environment deactivates it.
 
-Each variable row has a checkbox to enable or disable it individually without deleting.
+Each variable row has a checkbox to enable or disable it individually without deleting. You can also use the **Bulk Edit** button to switch to a plain-text editor where each line is `key:value` — handy for pasting variables from `.env` files or other sources. Prefix a line with `#` to disable it.
 
 ### Variable Syntax
 

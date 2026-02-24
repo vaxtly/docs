@@ -15,6 +15,22 @@ You can override any auto-generated header by adding one with the same name in t
 
 Query parameters and the URL are synchronized bidirectionally. Editing a parameter in the Params tab updates the URL query string, and editing the URL directly re-parses the parameters into the table.
 
+### Bulk Edit
+
+Click the **Bulk Edit** button in the top-right corner of any key-value editor to switch to a plain-text textarea. Each line represents one entry in `key:value` format:
+
+```
+Content-Type:application/json
+Authorization:Bearer {{token}}
+Cache-Control:no-cache
+```
+
+- The first `:` splits the key from the value — values can contain colons.
+- Prefix a line with `#` to mark it as **disabled**: `#X-Debug:true`
+- Empty lines are ignored.
+
+This makes it easy to paste multiple entries at once or copy them between editors (e.g., from headers to params). Click **Bulk Edit** again to return to the row editor.
+
 ### Environment Variables
 
 Use <code v-pre>{{variable}}</code> syntax in any header or param key or value. Variables are highlighted inline — green when resolved, red when unresolved. Hover to see the resolved value and its source (e.g., "Env: Production" or "Collection").
