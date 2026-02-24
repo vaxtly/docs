@@ -4,12 +4,17 @@ Both headers and query parameters use the same **key-value editor**. Each row ha
 
 ### Auto-Generated Headers
 
-Some headers are added automatically based on your request configuration and displayed in a read-only section labeled "Auto-generated":
+Some headers are added automatically based on your request configuration. They appear inline in the same editor as your custom headers, marked with an **auto** badge:
 
 - **Content-Type** — set based on the selected body type (`application/json`, `application/xml`, `application/x-www-form-urlencoded`). For form-data, the Content-Type is managed automatically by the HTTP client to include the multipart boundary.
 - **Authorization** — set based on the Auth tab configuration (Bearer, Basic, or API Key).
 
-You can override any auto-generated header by adding one with the same name in the editable section below. User-provided headers always take precedence (case-insensitive matching).
+Auto-generated headers stay in sync — changing the body type or auth config updates them automatically. You can:
+
+- **Disable** an auto-generated header by unchecking it (e.g., to send a request without the Authorization header).
+- **Edit** its value directly if you need a custom override.
+
+Auto-generated headers cannot be deleted (no delete button), but they disappear automatically when the source is removed (e.g., switching body type to "none" or auth to "None"). They are not stored in the database — they are recomputed each time the request is loaded.
 
 ### URL ↔ Params Sync
 
