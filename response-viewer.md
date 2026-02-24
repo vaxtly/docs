@@ -25,5 +25,19 @@ The status bar displays:
 - **Error** — network errors show a red error card with the failure message
 - **Success** — status bar + tabbed content
 
+### Session Log Detail
+
+Every HTTP request is also logged to the **Log panel** at the bottom of the window. HTTP log entries show a chevron (▸) — click a row to expand it and inspect the full request/response detail without leaving your current tab.
+
+The expanded detail has two tabs:
+
+- **Request** — URL, query parameters, headers, and body (with body type label). JSON bodies are auto-formatted.
+- **Response** — status code, TTFB and total timing, response size, headers, body, and cookies.
+
+This is useful for reviewing past requests, debugging failed requests (network errors show the request side populated with status 0), or inspecting requests triggered by pre-request scripts.
+
+> [!TIP]
+> Drag the top edge of the log panel to resize it. The panel remembers its height while the app is open.
+
 > [!NOTE]
-> **Note:** Responses are held in memory only while the tab is open. There is no persistent response history. The maximum response body size is 50 MB.
+> **Note:** Responses are held in memory only while the tab is open. There is no persistent response history. The maximum response body size is 50 MB. Log entry bodies are truncated to 50 KB.
