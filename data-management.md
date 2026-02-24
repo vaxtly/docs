@@ -27,6 +27,17 @@ Vaxtly auto-detects and supports three Postman formats:
 - **Collection v2.1** — single Postman collection export (detected by `info._postman_id` or `info.schema`)
 - **Environment** — Postman environment export (detected by `_postman_variable_scope` or `values` array)
 
+### Import — Insomnia
+
+Vaxtly auto-detects the Insomnia v4 JSON export format. The following resources are imported:
+
+- **Workspaces** → Collections
+- **Request groups** → Folders (with nested folder hierarchy preserved)
+- **Requests** → Requests (method, URL, headers, query params, body, auth)
+- **Environments** → Environments (variables as key-value pairs)
+
+Supported body types: JSON, XML, form-data, URL-encoded, and GraphQL. Authentication types (Bearer, Basic, API Key, OAuth 2.0) are mapped automatically.
+
 The import summary shows how many collections, environments, folders, and requests were imported, along with any errors.
 
 ### Drag-and-Drop Import
@@ -34,4 +45,4 @@ The import summary shows how many collections, environments, folders, and reques
 You can drag and drop a JSON file directly onto the Data tab. A drop zone with a dashed border appears — drop the file and it will be auto-detected and imported.
 
 > [!TIP]
-> **Tip:** Use the browse button or drag-and-drop to import files. The file format is detected automatically — you don't need to specify whether it's a Vaxtly export or a Postman file.
+> Use the browse button or drag-and-drop to import files. The file format is detected automatically — you don't need to specify whether it's a Vaxtly, Postman, or Insomnia file.
