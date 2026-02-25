@@ -116,7 +116,7 @@ Vaxtly uses a **3-way merge** strategy per file, tracking the local content hash
 
 ### Conflict Resolution
 
-When both local and remote have changed since the last sync, Vaxtly detects the conflict and presents a modal with two options:
+When both local and remote have changed since the last sync, Vaxtly detects the conflict and shows a detailed breakdown of what changed on each side — which requests, folders, or settings were added, modified, or deleted locally and remotely. This helps you make an informed decision before choosing a resolution:
 
 - **Keep Local** — overwrites the remote with your local changes
 - **Keep Remote** — overwrites your local data with the remote version
@@ -137,7 +137,7 @@ If findings are detected, a modal shows each finding grouped by request, with th
 
 ### Auto Sync
 
-Enable **Auto Sync** in Settings → Remote Sync to automatically pull on application startup and push after saving. Errors during auto-sync are logged to the session log and shown as toast notifications.
+Enable **Auto Sync** in Settings → Remote Sync to automatically pull on application startup and push after saving. If a conflict is detected during auto-sync, the conflict modal appears immediately so you can resolve it. Other errors are logged to the session log and shown as toast notifications.
 
 > [!TIP]
 > **Tip:** Use environment variables (<code v-pre>{{api_key}}</code>) in your requests instead of hardcoded values. The sensitive data scanner won't flag variable references, and the actual values stay in your local environments.
