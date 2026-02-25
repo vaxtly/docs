@@ -94,9 +94,14 @@ Leave the field empty to use the public cloud (github.com or gitlab.com). The AP
 
 **Pull** downloads collections from the remote repository. Each collection is stored as a directory of YAML files — one `_collection.yaml` for metadata and one YAML file per request. Pulling creates local environments for any new collections found on the remote.
 
+- **Pull All** (Settings → Remote Sync → Pull) checks all remote collections and merges changes for clean collections. Dirty collections trigger a conflict prompt.
+- **Pull Single Collection** (right-click → Pull from Remote) is a **force pull** — it overwrites the local state with the remote version, even if the collection has unsaved local changes. Use this when you explicitly want to discard local changes and match the remote.
+
 **Push** uploads your local collections to the remote. You can push individual collections (right-click → Push to Remote) or push all sync-enabled collections at once from the Remote Sync settings tab.
 
 When you save a request in a sync-enabled collection, changes are automatically pushed to the remote in the background. Moving a request between sync-enabled collections triggers a push on both the source and target collections.
+
+All sync operations (pull, push, conflict detection, errors) are logged to the **Session Log** panel at the bottom of the window. Open it with <kbd>Cmd+L</kbd> to see a live feed of what's happening.
 
 ### How Files Are Stored
 
@@ -116,10 +121,12 @@ Vaxtly uses a **3-way merge** strategy per file, tracking the local content hash
 
 ### Conflict Resolution
 
-When both local and remote have changed since the last sync, Vaxtly detects the conflict and shows a detailed breakdown of what changed on each side — which requests, folders, or settings were added, modified, or deleted locally and remotely. This helps you make an informed decision before choosing a resolution:
+When both local and remote have changed since the last sync, Vaxtly detects the conflict and shows a conflict modal with a detailed breakdown of what changed on each side — which requests, folders, or settings were added, modified, or deleted locally and remotely. This helps you make an informed decision before choosing a resolution:
 
 - **Keep Local** — overwrites the remote with your local changes
 - **Keep Remote** — overwrites your local data with the remote version
+
+Conflicts are detected on all sync paths — pull-all, push-collection, push-all, and auto-sync. Regardless of which action triggered the conflict, the same modal appears so you can resolve it. If multiple collections have conflicts, they are queued and resolved one at a time.
 
 Conflicts are resolved per-collection, not per-file.
 
