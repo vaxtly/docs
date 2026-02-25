@@ -8,11 +8,19 @@ At the top is the URL input with a **method selector** dropdown. Supported metho
 
 Environment variables (<code v-pre>{{variable}}</code>) in the URL are highlighted inline — green for resolved, red for unresolved. Hover over a highlighted variable to see its value and source.
 
+### Draft Requests
+
+Press <kbd>Cmd+N</kbd> or double-click empty space in the tab bar to create a **draft request**. Drafts are scratchpads — they live in memory, don't belong to a collection, and don't appear in the sidebar. You can edit and send them freely.
+
+When you press <kbd>Cmd+S</kbd> on a draft, a **collection picker** appears where you choose (or create) a collection. The draft is then promoted to a saved request.
+
+Drafts are transient — they are lost when you restart the app.
+
 ### Sending & Cancelling
 
 Press the **Send** button or <kbd>Cmd+Enter</kbd> to execute the request. You can also press <kbd>Enter</kbd> in the URL bar. While a request is in flight, the Send button becomes a **Cancel** button. Cancellation also triggers automatically if the request exceeds the configured timeout.
 
-Sending a request implicitly saves it to the database. If the collection has sync enabled, changes are pushed to the remote in the background.
+Sending a saved request implicitly writes it to the database. If the collection has sync enabled, changes are pushed to the remote in the background. Draft requests can be sent without saving — the response appears normally.
 
 ### Layout
 

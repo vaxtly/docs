@@ -4,8 +4,8 @@ The modifier key is <kbd>Cmd</kbd> on macOS and <kbd>Ctrl</kbd> on Linux/Windows
 
 | Shortcut | Action |
 |---|---|
-| <kbd>Mod+N</kbd> | New request |
-| <kbd>Mod+S</kbd> | Save request |
+| <kbd>Mod+N</kbd> | New draft request |
+| <kbd>Mod+S</kbd> | Save request (drafts: pick collection first) |
 | <kbd>Mod+Enter</kbd> | Send request |
 | <kbd>Mod+W</kbd> | Close tab |
 | <kbd>Mod+B</kbd> | Toggle sidebar |
@@ -33,5 +33,6 @@ Standard CodeMirror shortcuts work in the body editor and response viewer:
 
 | Action | How |
 |---|---|
+| New draft request | Double-click empty space in the tab bar |
 | Close tab | Middle-click the tab |
 | Context menu | Right-click a tab (Pin, Close, Close Others, Close All) |

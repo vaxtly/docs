@@ -46,6 +46,9 @@ For legacy systems that accept username/password credentials.
 
 #### Token Management
 
+> [!NOTE]
+> OAuth2 token operations (Get Token, Refresh, Clear) require the request to be saved to a collection first. On draft requests, these buttons are disabled — but you can still configure all the OAuth2 fields and save later.
+
 Once a token is obtained, the Auth tab shows the token status:
 
 - **Active badge** with token type (e.g., Bearer) and expiry countdown
