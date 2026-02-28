@@ -99,13 +99,69 @@ Shows server-initiated notifications (e.g., when the server's tool or resource l
 - Each entry shows the notification method and timestamp
 - Click to expand and see the full notification params
 
+## Variable Substitution
+
+MCP server configuration fields support <code v-pre>{{variable}}</code> references, just like requests. Variables are resolved at connect time using the active environment.
+
+Supported fields:
+
+| Transport | Fields with variable support |
+|-----------|----------------------------|
+| **stdio** | Command, Arguments, Environment Variable values, Working Directory |
+| **HTTP / SSE** | URL, Header values |
+
+Variable names in key-value pairs (environment variable names, header names) are **not** substituted — only values.
+
+Variables are highlighted inline in the configuration form: **green** for resolved variables, **red** for unresolved ones. Hover to see the resolved value and source.
+
+> [!TIP]
+> Use environment variables for sensitive values like API keys in MCP server env vars or headers. For example, set an environment variable <code v-pre>API_KEY: "{{my_api_key}}"</code> instead of hardcoding the value.
+
+## Git Sync
+
+MCP server configurations can be synced to the same Git remote as your collections. This requires [Remote Sync](/remote-sync) to be configured first.
+
+### Enabling Sync
+
+Right-click a server in the sidebar and select **Enable Sync**. The server is immediately pushed to the remote. A sync icon appears next to servers that have sync enabled.
+
+### How It Works
+
+- **Auto-push on save** — when you save changes to a sync-enabled server, it's automatically pushed to the remote
+- **Auto-pull on startup** — if Auto Sync is enabled in Settings → Remote Sync, MCP servers are pulled along with collections on app launch
+- **Manual pull** — clicking Pull in Settings → Remote Sync pulls both collections and MCP servers
+- **Push All** — pushes all sync-enabled collections and MCP servers at once
+
+### Sensitive Data Scanning
+
+Before pushing, Vaxtly scans MCP server env var values and header values for potentially sensitive data (API keys, tokens, secrets, etc.). The same scanning and sanitization options available for collections apply to MCP servers — see [Sensitive Data Scanning](/remote-sync#sensitive-data-scanning).
+
+> [!TIP]
+> Use <code v-pre>{{variable}}</code> references in your MCP server env vars and headers. Variable references are not flagged by the sensitive data scanner.
+
+### File Format
+
+MCP servers are stored in a `mcp-servers/` directory on the remote alongside `collections/`:
+
+```
+mcp-servers/
+  _manifest.yaml       # Server ordering
+  {server-id}.yaml     # One file per server
+```
+
+### Disabling Sync
+
+Right-click a server and select **Disable Sync**. The server remains locally but is no longer pushed on save.
+
 ## Context Menu
 
 Right-click any server in the sidebar for quick actions:
 
 - **Connect** / **Disconnect** — manage the connection
 - **Edit** — open the server configuration
-- **Delete** — remove the server (closes any open tab)
+- **Enable Sync** / **Disable Sync** — toggle Git sync for this server
+- **Push to Remote** — manually push this server to the remote
+- **Delete** — remove the server (also deletes from remote if synced)
 
 ## Multiple Connections
 

@@ -70,7 +70,7 @@ Alternatively, the **`api`** scope covers everything but grants broader access t
 
 Enter the **namespace/project** path (e.g., `myorg/api-collections`) or the **numeric project ID** as the repository value. Do not include `gitlab.com` — just the path portion. You can find the project ID on the project's main page in GitLab, just below the project name.
 
-Sync is **per-collection** — you choose which collections to sync by right-clicking a collection in the sidebar and toggling "Enable Sync." Collections that aren't sync-enabled are purely local.
+Sync is **per-item** — you choose which collections and MCP servers to sync by right-clicking them in the sidebar and toggling "Enable Sync." Items that aren't sync-enabled are purely local.
 
 ---
 
@@ -92,20 +92,20 @@ Leave the field empty to use the public cloud (github.com or gitlab.com). The AP
 
 ### Pull & Push
 
-**Pull** downloads collections from the remote repository. Each collection is stored as a directory of YAML files — one `_collection.yaml` for metadata and one YAML file per request. Pulling creates local environments for any new collections found on the remote.
+**Pull** downloads collections and MCP servers from the remote repository. Each collection is stored as a directory of YAML files — one `_collection.yaml` for metadata and one YAML file per request. MCP servers are stored as individual YAML files in a `mcp-servers/` directory. Pulling creates local environments for any new collections found on the remote.
 
-- **Pull All** (Settings → Remote Sync → Pull) checks all remote collections and merges changes for clean collections. Dirty collections trigger a conflict prompt.
+- **Pull All** (Settings → Remote Sync → Pull) checks all remote collections and MCP servers, merging changes for clean items. Dirty collections trigger a conflict prompt.
 - **Pull Single Collection** (right-click → Pull from Remote) is a **force pull** — it overwrites the local state with the remote version, even if the collection has unsaved local changes. Use this when you explicitly want to discard local changes and match the remote.
 
-**Push** uploads your local collections to the remote. You can push individual collections (right-click → Push to Remote) or push all sync-enabled collections at once from the Remote Sync settings tab.
+**Push** uploads your local collections and MCP servers to the remote. You can push individual items (right-click → Push to Remote) or push all sync-enabled items at once from the Remote Sync settings tab.
 
-When you save a request in a sync-enabled collection, changes are automatically pushed to the remote in the background. Moving a request between sync-enabled collections triggers a push on both the source and target collections.
+When you save a request in a sync-enabled collection, changes are automatically pushed to the remote in the background. Moving a request between sync-enabled collections triggers a push on both the source and target collections. Saving an MCP server configuration with sync enabled also auto-pushes.
 
 All sync operations (pull, push, conflict detection, errors) are logged to the **Session Log** panel at the bottom of the window. Open it with <kbd>Cmd+L</kbd> to see a live feed of what's happening.
 
 ### How Files Are Stored
 
-Each synced collection becomes a directory on the remote:
+Each synced collection becomes a directory on the remote, and MCP servers get their own directory:
 
 ```
 collections/
@@ -113,6 +113,10 @@ collections/
     _collection.yaml     # Collection metadata + folder structure
     _manifest.yaml       # Ordering information
     {request-id}.yaml    # One file per request
+
+mcp-servers/
+  _manifest.yaml         # Server ordering
+  {server-id}.yaml       # One file per server
 ```
 
 Vaxtly uses a **3-way merge** strategy per file, tracking the local content hash and the remote blob SHA. This allows it to detect when both sides have changed independently.
@@ -134,7 +138,7 @@ Conflicts are resolved per-collection, not per-file.
 
 ### Sensitive Data Scanning
 
-Before pushing, Vaxtly scans your collection for potentially sensitive data in headers, query parameters, body, auth credentials, and collection variables. It checks for over 100 known sensitive key patterns including `authorization`, `api_key`, `token`, `password`, `secret`, `aws_secret_access_key`, `stripe_key`, and more.
+Before pushing, Vaxtly scans your collections and MCP servers for potentially sensitive data. For collections, it checks headers, query parameters, body, auth credentials, and collection variables. For MCP servers, it checks environment variable values and header values. It checks for over 100 known sensitive key patterns including `authorization`, `api_key`, `token`, `password`, `secret`, `aws_secret_access_key`, `stripe_key`, and more.
 
 If findings are detected, a modal shows each finding grouped by request, with the key name and a masked preview of the value (first 4 characters visible). You have three choices:
 
@@ -144,7 +148,7 @@ If findings are detected, a modal shows each finding grouped by request, with th
 
 ### Auto Sync
 
-Enable **Auto Sync** in Settings → Remote Sync to automatically pull on application startup and push after saving. If a conflict is detected during auto-sync, the conflict modal appears immediately so you can resolve it. Other errors are logged to the session log and shown as toast notifications.
+Enable **Auto Sync** in Settings → Remote Sync to automatically pull on application startup and push after saving. Both collections and MCP servers are pulled during auto-sync. If a conflict is detected during auto-sync, the conflict modal appears immediately so you can resolve it. Other errors are logged to the session log and shown as toast notifications.
 
 > [!TIP]
 > **Tip:** Use environment variables (<code v-pre>{{api_key}}</code>) in your requests instead of hardcoded values. The sensitive data scanner won't flag variable references, and the actual values stay in your local environments.
