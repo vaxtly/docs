@@ -130,6 +130,7 @@ Right-click a server in the sidebar and select **Enable Sync**. The server is im
 - **Auto-push on save** — when you save changes to a sync-enabled server, it's automatically pushed to the remote
 - **Auto-pull on startup** — if Auto Sync is enabled in Settings → Remote Sync, MCP servers are pulled along with collections on app launch
 - **Manual pull** — clicking Pull in Settings → Remote Sync pulls both collections and MCP servers
+- **Pull single server** — right-click → Pull from Remote overwrites the local config with the remote version
 - **Push All** — pushes all sync-enabled collections and MCP servers at once
 
 ### Sensitive Data Scanning
@@ -161,6 +162,7 @@ Right-click any server in the sidebar for quick actions:
 - **Edit** — open the server configuration
 - **Enable Sync** / **Disable Sync** — toggle Git sync for this server
 - **Push to Remote** — manually push this server to the remote
+- **Pull from Remote** — overwrite local config with the remote version
 - **Delete** — remove the server (also deletes from remote if synced)
 
 ## Multiple Connections
