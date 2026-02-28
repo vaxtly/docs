@@ -6,7 +6,7 @@ Vaxtly is a modern API client for crafting, testing, and managing HTTP requests.
 
 The interface is split into three main areas:
 
-- **Sidebar** (left) — two modes: **Collections** (browse your request tree) and **Environments** (manage variable sets). Toggle between them using the mode tabs at the top. A search bar filters the tree in real time. The footer toolbar has buttons to expand/collapse the entire tree and cycle through themes.
+- **Sidebar** (left) — three modes: **Collections** (browse your request tree), **Environments** (manage variable sets), and **MCP** (connect to and inspect MCP servers). Toggle between them using the icons in the footer toolbar. A search bar filters the list in real time.
 - **Tab bar** (top) — open requests and environments as tabs. Each request tab shows the HTTP method badge and name. An orange dot indicates unsaved changes. Drag tabs left or right to reorder them — neighboring tabs slide apart to preview the new position. Double-click empty space in the tab bar to create a new draft request. Right-click a tab for options: Pin, Close, Close Others, Close All. Middle-click to close a tab. Pinned tabs survive "Close All."
 - **Editor area** (center) — the request builder on top and response viewer on the bottom (or side-by-side, depending on layout setting). A draggable divider lets you resize the split.
 - **Log panel** (bottom) — a collapsible session log that shows HTTP requests, sync operations, vault events, and script activity. Click the **Logs** button to expand. HTTP log entries have a chevron — click to expand and inspect the full request and response details (headers, body, query params, timing, cookies).

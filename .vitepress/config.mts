@@ -37,7 +37,8 @@ export default defineConfig({
           { text: 'Environments & Variables', link: '/environments' },
           { text: 'Scripts', link: '/scripts' },
           { text: 'Response Viewer', link: '/response-viewer' },
-          { text: 'Code Generation', link: '/code-generation' }
+          { text: 'Code Generation', link: '/code-generation' },
+          { text: 'MCP Servers', link: '/mcp-servers' }
         ]
       },
       {
