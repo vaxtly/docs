@@ -4,20 +4,21 @@ Export and import your data from **Settings → Data**.
 
 ### Export
 
-Four export options:
+Five export options:
 
-- **Everything** — collections (with nested folders and requests) + environments + configuration
+- **Everything** — collections (with nested folders and requests) + environments + MCP servers + configuration
 - **Collections** — all collections with their full folder/request tree
 - **Environments** — all environments with variables (vault-synced environments export with empty variables)
+- **MCP Servers** — all MCP server configurations and transport settings
 - **Config** — sync and vault settings (tokens are excluded for security)
 
-You can also export a single collection by right-clicking it in the sidebar and choosing "Export."
+You can also export individual items by right-clicking in the sidebar and choosing "Export" — this works for both collections and MCP servers.
 
 Exported data is saved as a JSON file named `vaxtly-export-{type}-{date}.json`.
 
 ### Import — Vaxtly Format
 
-Import a previously exported Vaxtly JSON file. Collections, environments, and config are restored into the current workspace.
+Import a previously exported Vaxtly JSON file. Collections, environments, MCP servers, and config are restored into the current workspace. All export types are supported — single items (one collection or one MCP server), category exports (all collections, all MCP servers, etc.), and full "Everything" exports.
 
 ### Import — Postman
 

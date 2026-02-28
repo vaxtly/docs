@@ -4,7 +4,7 @@ Vaxtly includes a built-in MCP (Model Context Protocol) inspector for testing an
 
 ## Adding a Server
 
-1. Click the **plug icon** in the sidebar footer to switch to MCP mode
+1. Switch to MCP mode using the **mode selector dropdown** in the sidebar header or the **plug icon** in the sidebar footer
 2. Click the **+** button in the sidebar header
 3. A new server is created — click it to open the configuration form
 
@@ -163,6 +163,7 @@ Right-click any server in the sidebar for quick actions:
 - **Enable Sync** / **Disable Sync** — toggle Git sync for this server
 - **Push to Remote** — manually push this server to the remote
 - **Pull from Remote** — overwrite local config with the remote version
+- **Export** — download this server's configuration as a JSON file (can be re-imported via Settings → Data)
 - **Delete** — remove the server (also deletes from remote if synced)
 
 ## Multiple Connections
