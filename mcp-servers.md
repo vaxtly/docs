@@ -57,34 +57,51 @@ Connects to a Server-Sent Events endpoint (older MCP transport).
 
 ## Exploring Server Capabilities
 
-Once connected, the inspector shows five tabs:
+Once connected, the inspector uses a **split-panel layout** — input and interaction on the left, server responses on the right. You can drag the divider between the panels to resize them.
 
-### Tools
+### Left Panel
+
+The left panel has three tabs:
+
+#### Tools
 
 Lists all tools the server exposes. Each tool shows its name, description, and input schema.
 
 To call a tool:
-1. Click **Call** on the tool you want to test
+1. Click a tool to expand it
 2. Fill in the arguments using the auto-generated form (built from the tool's JSON Schema)
 3. Click **Call Tool**
-4. The result appears inline below the form
+4. The result appears in the **Response** tab on the right panel
 
-### Resources
+#### Resources
 
 Lists static resources and resource templates the server provides.
 
-- Click **Read** on any resource to fetch and display its content
-- Resource templates show their URI pattern — fill in the template variables to read
+- Click a resource to expand it, then click **Read Resource** to fetch its content
+- The result appears in the **Response** tab on the right panel
+- Resource templates show their URI pattern
 
-### Prompts
+#### Prompts
 
 Lists prompt templates with their argument definitions.
 
-- Click **Get** to fetch a prompt
-- Fill in any required arguments
-- The result shows the prompt messages (user/assistant) with their content
+- Click a prompt to expand it, then fill in any required arguments
+- Click **Get Prompt** to fetch the prompt
+- The result appears in the **Response** tab on the right panel
 
-### Traffic
+### Right Panel
+
+The right panel has three tabs:
+
+#### Response
+
+Displays the result of the last tool call, resource read, or prompt get. The inspector automatically switches to this tab when a result arrives.
+
+- **Tool results** show the content blocks returned by the tool (text, images, or embedded resources)
+- **Resource results** show the resource contents (text or binary)
+- **Prompt results** show the prompt messages with their roles and content
+
+#### Traffic
 
 A live log of all JSON-RPC messages between Vaxtly and the server.
 
@@ -92,7 +109,7 @@ A live log of all JSON-RPC messages between Vaxtly and the server.
 - Click an entry to expand and see the full params/result/error JSON
 - Use **Clear** to reset the log
 
-### Notifications
+#### Notifications
 
 Shows server-initiated notifications (e.g., when the server's tool or resource list changes).
 
