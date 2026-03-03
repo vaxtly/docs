@@ -136,6 +136,28 @@ Conflicts are resolved per-collection, not per-file.
 
 ---
 
+### Deleting Synced Collections
+
+When you delete a synced collection (right-click → Delete), Vaxtly prompts you to choose:
+
+- **Delete locally only** — removes the collection from your app, but the remote copy stays in the Git repository. Other team members who pull from the repo will still see it.
+- **Delete everywhere** — removes the collection from your app AND deletes its directory from the remote repository.
+
+Non-synced collections are deleted immediately without a prompt.
+
+---
+
+### Orphaned Collections
+
+If a synced collection's remote directory is deleted (by another user, or directly in the Git repository), Vaxtly detects this during the next pull or auto-sync and shows a prompt:
+
+- **Delete locally** — removes the orphaned collection from your app.
+- **Keep locally** — keeps the collection in your app but disables sync. The collection will show a folder icon instead of the sync icon.
+
+If multiple orphaned collections are detected, they are queued and resolved one at a time (after any sync conflicts are resolved first).
+
+---
+
 ### Sensitive Data Scanning
 
 Before pushing, Vaxtly scans your collections and MCP servers for potentially sensitive data. For collections, it checks headers, query parameters, body, auth credentials, and collection variables. For MCP servers, it checks environment variable values and header values. It checks for over 100 known sensitive key patterns including `authorization`, `api_key`, `token`, `password`, `secret`, `aws_secret_access_key`, `stripe_key`, and more.
