@@ -41,6 +41,7 @@ AWS Secrets Manager is a fully managed service that stores secrets as JSON objec
 
 Fill in the following fields:
 
+- **Endpoint Override** — *Optional.* A custom endpoint URL for AWS-compatible services like [LocalStack](https://localstack.cloud/) (e.g. `http://localhost:4566`). Leave empty to use the real AWS service. Useful for local development and testing without an AWS account.
 - **Region** — The AWS region where your secrets are stored (e.g. `us-east-1`, `eu-west-1`, `ap-southeast-1`). You can find this in the AWS Console URL bar or in your AWS CLI config. If you are unsure, check your AWS Console: open Secrets Manager and look at the region name in the top-right corner of the page.
 - **Authentication** — Choose one of three methods:
   - **Access Keys** — Paste an IAM Access Key ID (starts with `AKIA`) and its Secret Access Key. Best for quick setup or CI/headless environments.
