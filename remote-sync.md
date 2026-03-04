@@ -70,7 +70,7 @@ Alternatively, the **`api`** scope covers everything but grants broader access t
 
 Enter the **namespace/project** path (e.g., `myorg/api-collections`) or the **numeric project ID** as the repository value. Do not include `gitlab.com` — just the path portion. You can find the project ID on the project's main page in GitLab, just below the project name.
 
-Sync is **per-item** — you choose which collections and MCP servers to sync by right-clicking them in the sidebar and toggling "Enable Sync." Items that aren't sync-enabled are purely local.
+Sync is **per-item** — you choose which collections and MCP servers to sync by right-clicking them in the sidebar and toggling "Enable Sync." When you enable sync, Vaxtly automatically pushes the item to the remote (including the sensitive data scan — if findings are detected, the modal appears before anything is pushed). Items that aren't sync-enabled are purely local.
 
 ---
 
