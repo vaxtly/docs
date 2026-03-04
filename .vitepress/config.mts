@@ -38,6 +38,7 @@ export default defineConfig({
           { text: 'Scripts', link: '/scripts' },
           { text: 'Response Viewer', link: '/response-viewer' },
           { text: 'Code Generation', link: '/code-generation' },
+          { text: 'WebSocket', link: '/websocket' },
           { text: 'MCP Servers', link: '/mcp-servers' }
         ]
       },
