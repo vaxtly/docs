@@ -141,7 +141,11 @@ Click **Test Connection** to verify your configuration. For HashiCorp Vault this
 
 When editing an environment, you can enable **Vault Sync** (the toggle says "Sync variables with HashiCorp Vault" or "Sync variables with AWS Secrets Manager" depending on your provider). This links the environment to a specific secret path. The path defaults to a slugified version of the environment name, but you can customize it.
 
+When you enable vault sync on an environment that already has variables, Vaxtly **automatically pushes them to the vault** so nothing is lost. If the push fails, the toggle stays off and you'll see an error message.
+
 With sync enabled, **Save** pushes variables to the provider instead of writing them to the local database. The **Pull from Vault** button fetches fresh values from the provider.
+
+When you disable vault sync, variables are cleared from the editor to avoid leaking vault secrets into the local database. Pull any values you need before disabling.
 
 ---
 
