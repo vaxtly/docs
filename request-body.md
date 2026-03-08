@@ -8,7 +8,7 @@ Vaxtly supports seven body types, selectable from tabs at the top of the body ed
 - **Form Data** — key-value table with a per-row type toggle between **Text** and **File**. Text values support <code v-pre>{{variable}}</code> substitution. File entries open the native OS file picker. Includes a **Bulk Edit** mode (see below).
 - **URL-Encoded** — key-value pairs sent as `application/x-www-form-urlencoded`. Includes a **Bulk Edit** mode (same as headers/params).
 - **Raw** — plain text editor for any content type
-- **GraphQL** — split editor with a query panel on top and a variables panel below (JSON format)
+- **GraphQL** — split editor with a query panel on top and a variables panel below (JSON format). Supports schema introspection for autocompletion (see below).
 
 ### Body Type Caching
 
@@ -17,6 +17,26 @@ Switching between body types preserves your content. Each type's content is cach
 ### Form Data File Uploads
 
 For form-data entries, click the type toggle button on a row to switch it from text to file mode. A "Choose file..." button opens the OS file dialog. Only files selected through this dialog can be read by the application — this is a security measure to prevent arbitrary file access.
+
+### GraphQL Schema Introspection
+
+When using the **GraphQL** body type, Vaxtly can fetch the schema from your endpoint to enable autocompletion and validation in the query editor.
+
+1. Enter your GraphQL endpoint URL in the URL bar.
+2. Switch to the **GraphQL** body type.
+3. Click the **Schema** button in the query panel header.
+
+Vaxtly sends a standard introspection query to the endpoint (using the request's headers for authentication). Once loaded, you get:
+
+- **Autocompletion** — field names, types, arguments, and directives as you type
+- **Syntax highlighting** — GraphQL-aware highlighting in the query editor
+
+The schema status is shown next to the button: "Schema loaded" (green) or "Schema error" (red, with details on hover). Click **Refresh** to re-fetch after schema changes.
+
+The divider between the query and variables panels is **draggable** — drag it up or down to resize the panels.
+
+> [!TIP]
+> Environment variables (<code v-pre>{{variable}}</code>) in the URL and headers are resolved before the introspection request is sent, so you can use variables for the endpoint URL and auth headers.
 
 ### Form Data Bulk Edit
 
