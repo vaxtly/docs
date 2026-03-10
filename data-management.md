@@ -16,6 +16,27 @@ You can also export individual items by right-clicking in the sidebar and choosi
 
 Exported data is saved as a JSON file named `vaxtly-export-{type}-{date}.json`.
 
+### Export — OpenAPI
+
+Right-click a collection in the sidebar and choose **Export as OpenAPI** to generate an [OpenAPI 3.0.3](https://spec.openapis.org/oas/v3.0.3) specification file in YAML format.
+
+Vaxtly maps your collection data to the OpenAPI spec:
+
+- **Collection** name and description → `info.title` and `info.description`
+- **Folders** → tags (requests are tagged by their top-level parent folder)
+- **Request** method and URL → `paths` and operations
+- **Query params** and **headers** → `parameters`
+- **Body** (JSON, XML, form-data, URL-encoded) → `requestBody` with content type and examples
+- **Auth** (Bearer, Basic, API Key, OAuth 2.0) → `components.securitySchemes`
+- **Common base URL** → `servers` (auto-detected from request URLs, including <code v-pre>{{variable}}</code> prefixes)
+- <code v-pre>{{variable}}</code> segments in paths → OpenAPI path parameters (`{variable}`)
+
+Sensitive credentials (tokens, passwords) are **never included** in the export — only the security scheme definitions.
+
+Since Vaxtly doesn't store response schemas, all operations include a default `200: Successful response`. You can enhance the exported spec in any OpenAPI editor afterward.
+
+The file is saved as `openapi-{collection}-{date}.yaml`.
+
 ### Import — Vaxtly Format
 
 Import a previously exported Vaxtly JSON file. Collections, environments, MCP servers, and config are restored into the current workspace. All export types are supported — single items (one collection or one MCP server), category exports (all collections, all MCP servers, etc.), and full "Everything" exports.
