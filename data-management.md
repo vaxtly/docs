@@ -37,6 +37,23 @@ Since Vaxtly doesn't store response schemas, all operations include a default `2
 
 The file is saved as `openapi-{collection}-{date}.yaml`.
 
+### Import — OpenAPI
+
+Import an [OpenAPI 3.x](https://spec.openapis.org/oas/v3.0.3) or Swagger 2.x specification file (JSON or YAML) to create a new collection.
+
+Vaxtly maps the spec to collection data:
+
+- `info.title` and `info.description` → **Collection** name and description
+- `tags` → **Folders** (undeclared tags referenced by operations are created automatically)
+- `paths` and operations → **Requests** with method, URL, and name (from `summary`, `operationId`, or `METHOD /path`)
+- `servers[0].url` + path → full request URL
+- `parameters` (query, header) → **Query params** and **Headers**
+- `requestBody` → **Body** with detected type (JSON with example values, form-data, URL-encoded, XML, raw)
+- `securitySchemes` + `security` → **Auth** (Bearer, Basic, API Key, OAuth 2.0)
+- OpenAPI path parameters (`{variable}`) → <code v-pre>{{variable}}</code> in request URLs
+
+If a collection with the same name already exists, the imported collection is renamed with a numeric suffix (e.g., "My API (2)").
+
 ### Import — Vaxtly Format
 
 Import a previously exported Vaxtly JSON file. Collections, environments, MCP servers, and config are restored into the current workspace. All export types are supported — single items (one collection or one MCP server), category exports (all collections, all MCP servers, etc.), and full "Everything" exports.
@@ -74,7 +91,7 @@ Supported cURL flags: `-X`/`--request`, `-H`/`--header`, `-d`/`--data`/`--data-r
 
 ### Drag-and-Drop Import
 
-You can drag and drop a JSON file directly onto the Data tab. A drop zone with a dashed border appears — drop the file and it will be auto-detected and imported.
+You can drag and drop a JSON or YAML file directly onto the Data tab. A drop zone with a dashed border appears — drop the file and it will be auto-detected and imported.
 
 > [!TIP]
-> Use the browse button or drag-and-drop to import files. The file format is detected automatically — you don't need to specify whether it's a Vaxtly, Postman, or Insomnia file.
+> Use the browse button or drag-and-drop to import files. The file format is detected automatically — you don't need to specify whether it's a Vaxtly, Postman, Insomnia, or OpenAPI file.
