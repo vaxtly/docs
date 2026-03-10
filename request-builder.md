@@ -8,6 +8,8 @@ At the top is the URL input with a **method selector** combobox. Preset methods:
 
 Environment variables (<code v-pre>{{variable}}</code>) in the URL are highlighted inline — green for resolved, red for unresolved. Hover over a highlighted variable to see its value and source.
 
+**cURL paste** — Paste a cURL command into the URL bar and it will be automatically detected and parsed. The method, URL, headers, query params, body, and auth are all populated into the current tab.
+
 ### Draft Requests
 
 Press <kbd>Cmd+N</kbd> or double-click empty space in the tab bar to create a **draft request**. Drafts are scratchpads — they live in memory, don't belong to a collection, and don't appear in the sidebar. You can edit and send them freely.

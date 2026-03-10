@@ -41,6 +41,16 @@ Supported body types: JSON, XML, form-data, URL-encoded, and GraphQL. Authentica
 
 The import summary shows how many collections, environments, folders, and requests were imported, along with any errors.
 
+### Import — cURL
+
+Vaxtly detects cURL commands automatically in two ways:
+
+**Paste into URL bar** — Copy a cURL command from browser DevTools, documentation, or Stack Overflow, then paste it into the URL bar. Vaxtly detects it and populates the current request tab with the parsed method, URL, headers, query params, body, and auth.
+
+**Clipboard detection** — When you switch to Vaxtly with a cURL command in your clipboard, a modal appears asking if you'd like to import it. Click **Import Request** to create a new draft tab pre-filled with the parsed request. The same cURL won't prompt again after you import or dismiss it.
+
+Supported cURL flags: `-X`/`--request`, `-H`/`--header`, `-d`/`--data`/`--data-raw`, `--data-urlencode`, `-F`/`--form`, `-u`/`--user` (basic auth), `-A`/`--user-agent`, `-b`/`--cookie`, and `Authorization: Bearer/Basic` header extraction. Line continuations, single/double/ANSI-C quoting, and combined short flags (`-sSL`) are all handled.
+
 ### Drag-and-Drop Import
 
 You can drag and drop a JSON file directly onto the Data tab. A drop zone with a dashed border appears — drop the file and it will be auto-detected and imported.
