@@ -47,6 +47,7 @@ export default defineConfig({
         items: [
           { text: 'Remote Sync (Git)', link: '/remote-sync' },
           { text: 'Vault Integration', link: '/vault' },
+          { text: 'Network Settings', link: '/network-settings' },
           { text: 'Data Management', link: '/data-management' },
           { text: 'Keyboard Shortcuts', link: '/keyboard-shortcuts' }
         ]

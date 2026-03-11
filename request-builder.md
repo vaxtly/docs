@@ -36,3 +36,5 @@ Configurable in **Settings → General**:
 - **Follow Redirects** — on by default
 - **Verify SSL** — on by default; disable for self-signed certificates
 - **Layout** — rows or columns
+
+For proxy and certificate configuration, see [Network Settings](/network-settings).
