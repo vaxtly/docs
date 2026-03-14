@@ -1,6 +1,6 @@
 ## Request Builder
 
-The request builder is the main area for composing HTTP requests. It has five sub-tabs below the URL bar: **Params**, **Headers**, **Body**, **Auth**, and **Scripts**.
+The request builder is the main area for composing HTTP requests. It has six sub-tabs below the URL bar: **Params**, **Headers**, **Body**, **Auth**, **Scripts**, and **Tests**.
 
 ### URL Bar
 

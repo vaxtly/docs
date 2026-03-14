@@ -39,7 +39,8 @@ export default defineConfig({
           { text: 'Response Viewer', link: '/response-viewer' },
           { text: 'Code Generation', link: '/code-generation' },
           { text: 'WebSocket', link: '/websocket' },
-          { text: 'MCP Servers', link: '/mcp-servers' }
+          { text: 'MCP Servers', link: '/mcp-servers' },
+          { text: 'Cookie Jar', link: '/cookie-jar' }
         ]
       },
       {

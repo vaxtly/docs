@@ -11,8 +11,26 @@ Right-click in the sidebar to access the context menu:
 - **Set Environments** — choose which environments are available in this collection and set a default
 - **Enable/Disable Sync** — toggle Git remote sync for this collection
 - **Push to Remote** / **Pull from Remote** — manual sync operations (when sync is enabled)
+- **Run Collection** — execute all requests in the collection sequentially (see below)
 - **Export** — download the collection as a JSON file
 - **Delete** — permanently remove the collection and all its contents
+
+### Collection Runner
+
+Right-click a collection and select **Run Collection** to execute all requests sequentially. A modal opens showing:
+
+- **Progress bar** — fills as requests complete
+- **Results table** — each request's method, name, status code, response time, and test results (pass/fail counts from assertions)
+- **Summary** — total, passed, failed, skipped, and total duration
+
+The runner executes requests in sidebar order: root-level requests first (by sort order), then folders recursively. Pre-request scripts, post-response scripts, and assertions all run for each request. WebSocket requests are skipped.
+
+Variables flow between requests naturally — post-response scripts from one request set variables that subsequent requests can use.
+
+Click **Cancel** at any time to stop the run (remaining requests are marked as skipped). The modal cannot be dismissed while a run is in progress.
+
+> [!TIP]
+> The runner uses the same request execution path as manual sends, so cookies, environment variables, and auth tokens all work exactly as expected.
 
 ### Drag-and-Drop
 

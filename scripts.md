@@ -28,6 +28,45 @@ If the active environment has a variable with the same name as the target, it's 
 
 If you have the environment tab open while sending a request, the variables update live — no need to close and reopen the tab.
 
+### Response Assertions (Tests)
+
+The **Tests** tab in the request builder lets you define assertions that automatically verify response properties after each request. This is the foundation for automated API testing and the Collection Runner's pass/fail logic.
+
+#### Adding Assertions
+
+Click the **Tests** sub-tab, then **+ Add** to create an assertion. Each assertion has:
+
+- **Type** — what to check:
+  - `Status` — the HTTP status code
+  - `Header` — a response header value (case-insensitive name lookup)
+  - `JSON Path` — a value in a JSON response body (e.g., `data.items[0].id`)
+  - `Response Time` — total response time in milliseconds
+- **Target** — the header name or JSON path (only for Header and JSON Path types)
+- **Operator** — the comparison:
+  - `equals`, `not equals` — exact string match
+  - `contains`, `not contains` — substring match
+  - `exists`, `not exists` — checks if the value is present (no expected value needed)
+  - `less than`, `greater than` — numeric comparison
+  - `matches regex` — regular expression match
+- **Expected** — the value to compare against
+
+Each assertion can be toggled on/off individually. Disabled assertions are skipped during evaluation.
+
+#### Viewing Results
+
+After sending a request, if assertions are defined, a **Tests** tab appears in the response viewer showing:
+- A summary bar with pass/fail counts
+- Each assertion result with the actual value received and pass/fail status
+
+The Tests tab badge shows a green "X pass" count when all assertions pass, or a red "X fail" count when any fail.
+
+#### Operator Availability
+
+Status and Response Time only support numeric operators: `equals`, `not equals`, `less than`, `greater than`. Header and JSON Path support all operators.
+
+> [!TIP]
+> Assertions are stored in the same `scripts` field as pre/post-response scripts — no database migration needed. They persist when you save the request.
+
 ### Script Chain Depth
 
 Pre-request scripts can trigger chains (request A depends on request B, which depends on request C). The maximum chain depth is **3** to prevent infinite loops. Circular dependencies are detected and blocked.

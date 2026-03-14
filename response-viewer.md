@@ -18,6 +18,31 @@ The status bar displays:
 - **Cookies** — only shown when the response contains `Set-Cookie` headers. Each cookie is displayed as a card showing name, value, and attributes (domain, path, expires, httpOnly, secure, sameSite).
 - **Preview** — only shown when the response `Content-Type` is `text/html`. Renders the HTML in a sandboxed iframe with all permissions disabled (no scripts, no forms, no plugins).
 
+### Tests Tab
+
+When a request has [assertions](/scripts#response-assertions-tests) defined, a **Tests** tab appears after sending. It shows a summary of pass/fail counts and a table with each assertion result:
+
+- **Status indicator** — green dot for pass, red for fail
+- **Description** — human-readable summary (e.g., "Status equals 200")
+- **Actual value** — what the response returned
+- **Expected value** — what you specified
+
+The tab badge shows green "X pass" when all assertions pass, or red "X fail" when any fail. See [Scripts — Response Assertions](/scripts#response-assertions-tests) for how to set up assertions.
+
+### GraphQL Subscriptions
+
+When the request body type is **GraphQL** and the query starts with the `subscription` keyword, Vaxtly automatically switches to subscription mode:
+
+- The **Send** button changes to **Subscribe**
+- Clicking **Subscribe** opens a WebSocket connection using the `graphql-transport-ws` protocol
+- The response area shows a live event stream (similar to SSE) with each subscription event displayed as it arrives
+- Click **Unsubscribe** to close the connection
+
+The URL is automatically converted from `https://` to `wss://` (or `http://` to `ws://`). Auth headers are sent in the `connection_init` payload.
+
+> [!NOTE]
+> Events are stored in memory only while the tab is open. Closing the tab automatically unsubscribes.
+
 ### SSE Streaming
 
 Vaxtly automatically detects **Server-Sent Events (SSE)** responses — commonly used by AI APIs (OpenAI, Anthropic, etc.) and real-time feeds. When the server responds with `Content-Type: text/event-stream`, the response streams in real-time instead of waiting for the entire body to download.
