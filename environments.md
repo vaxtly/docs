@@ -6,7 +6,22 @@ Environments let you define sets of variables (like `base_url`, `api_key`) and s
 
 Create environments from the sidebar's **Environments** panel. Activate one by clicking its name in the sidebar list, or using the **environment selector** dropdown in the tab bar. Only one environment can be active at a time per workspace. Clicking an already-active environment deactivates it.
 
-Each variable row has a checkbox to enable or disable it individually without deleting. You can also use the **Bulk Edit** button to switch to a plain-text editor where each line is `key:value` — handy for pasting variables from `.env` files or other sources. Prefix a line with `#` to disable it.
+Each variable row has a checkbox to enable or disable it individually without deleting. You can also use the **Bulk Edit** button to switch to a plain-text editor where each line is `key:value` — handy for pasting variables from other sources. Prefix a line with `#` to disable it.
+
+### Importing .env Files
+
+Click the **import button** (download icon) next to the **+** button in the Environments sidebar header to import a `.env` file. Vaxtly opens a file picker, parses the file, and creates a new environment with all the variables pre-populated.
+
+The environment name is derived from the filename — `.env.production` becomes "production", `.env.staging` becomes "staging", and a plain `.env` becomes "dotenv".
+
+Supported `.env` syntax:
+
+- `KEY=VALUE` — basic key-value pairs
+- `KEY="value with spaces"` — double-quoted values (supports `\n`, `\t`, `\\`, `\"` escape sequences)
+- `KEY='literal value'` — single-quoted values (no escape processing)
+- `export KEY=VALUE` — optional `export` prefix is stripped
+- `# comments` and inline comments (`VALUE # comment`) are ignored
+- Empty lines are skipped
 
 ### Variable Syntax
 

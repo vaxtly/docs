@@ -1,7 +1,8 @@
 ## Authentication
 
-The Auth tab supports five authentication methods, selectable via buttons at the top:
+The Auth tab supports six authentication methods, selectable via buttons at the top:
 
+- **Inherit** — inherit authentication from the parent folder or collection (default for new requests)
 - **None** — no authentication header
 - **Bearer Token** — sends `Authorization: Bearer <token>`. A single token input field.
 - **Basic Auth** — sends base64-encoded `Authorization: Basic <credentials>`. Username and password fields (password is masked).
@@ -13,6 +14,19 @@ The selected auth method generates an implicit header shown in the Headers tab's
 All auth input fields support <code v-pre>{{variable}}</code> substitution with inline highlighting, so you can reference tokens stored in environments.
 
 Auth credentials are **encrypted at rest** using AES-256-GCM. Tokens and passwords stored in the database use an `enc:` prefix and are decrypted transparently when read.
+
+### Auth Inheritance
+
+Collections and folders can define their own authentication. Requests default to **Inherit**, which walks up the hierarchy — request → folder → parent folder → collection — and uses the first auth configuration found.
+
+To set auth on a collection or folder, right-click it in the sidebar and select **Settings**, then go to the **Auth** tab. All the same auth types are available (except Inherit).
+
+When a request uses Inherit, the Auth tab shows a preview of the resolved parent auth (type and a value snippet). If no parent has auth configured, the request sends with no authentication.
+
+To override inheritance on a single request, select any other auth type (None, Bearer, Basic, API Key, or OAuth 2.0). Only that request is affected — siblings continue inheriting from the parent.
+
+> [!TIP]
+> Set a bearer token on your collection (e.g., "Pokemon API") and all requests under it automatically use that token. Override individual requests by selecting a different auth type.
 
 ### OAuth 2.0
 

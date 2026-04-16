@@ -8,7 +8,7 @@ Right-click in the sidebar to access the context menu:
 
 - **Add Request** / **Add Folder** — create items inside the collection
 - **Rename** — inline editing of the name
-- **Set Environments** — choose which environments are available in this collection and set a default
+- **Settings** — open the collection settings tab to configure auth, environments, and variables
 - **Enable/Disable Sync** — toggle Git remote sync for this collection
 - **Push to Remote** / **Pull from Remote** — manual sync operations (when sync is enabled)
 - **Run Collection** — execute all requests in the collection sequentially (see below)
@@ -43,11 +43,21 @@ Requests can be moved between folders and collections by dragging them. Drop a r
 
 Collections with sync enabled show a colored dot next to their name: **green** when synced, **orange** when there are local changes that haven't been pushed yet.
 
+### Collection & Folder Settings
+
+Right-click a collection or folder and select **Settings** to open it as a tab. The settings editor has sub-tabs:
+
+- **Auth** — set authentication for all requests in this collection/folder (see [Authentication > Auth Inheritance](./authentication.md#auth-inheritance))
+- **Environments** — choose which environments are available and set a default
+- **Variables** — (collection only) define collection-level variables
+
+Changes are saved with <kbd>Cmd+S</kbd> (or the Save button). The tab shows an unsaved indicator dot when you have pending changes.
+
 ### Default Environments
 
 Each collection or folder can have a **default environment**. When you open a request, Vaxtly walks up the folder chain to find the nearest default: the immediate folder is checked first, then its parent, then the collection. The first one found is activated automatically.
 
-Set a default by right-clicking a collection or folder and choosing "Set Environments."
+Set a default in the collection or folder **Settings** tab under the **Environments** sub-tab.
 
 > [!TIP]
-> **Tip:** Folder-level defaults take precedence over collection-level defaults, so you can have a collection-wide "staging" env but override it for specific folders.
+> Folder-level defaults take precedence over collection-level defaults, so you can have a collection-wide "staging" env but override it for specific folders.
