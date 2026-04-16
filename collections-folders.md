@@ -49,6 +49,7 @@ Right-click a collection or folder and select **Settings** to open it as a tab. 
 
 - **Auth** — set authentication for all requests in this collection/folder (see [Authentication > Auth Inheritance](./authentication.md#auth-inheritance))
 - **Environments** — choose which environments are available and set a default
+- **Scripts** — configure pre-request and post-response scripts that run for every request in this collection/folder (see [Scripts > Collection & Folder-Level Scripts](./scripts.md#collection-folder-level-scripts))
 - **Variables** — (collection only) define collection-level variables
 
 Changes are saved with <kbd>Cmd+S</kbd> (or the Save button). The tab shows an unsaved indicator dot when you have pending changes.

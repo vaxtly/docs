@@ -1,26 +1,71 @@
 ## Scripts
 
-Vaxtly supports **pre-request** and **post-response** scripts for each request, enabling dynamic workflows like token refresh chains and response value extraction.
+Vaxtly supports **pre-request** and **post-response** scripts at both the **request level** and the **collection/folder level**, enabling dynamic workflows like automatic token refresh, response value extraction, and smart token caching.
+
+### Request-Level Scripts
+
+Each request can have its own pre-request and post-response scripts, configured in the **Scripts** sub-tab of the request builder.
+
+### Collection & Folder-Level Scripts
+
+Collections and folders can also define scripts via their **Settings** tab (right-click → Settings → Scripts). These run **before** any request-level scripts, in order:
+
+1. Collection scripts
+2. Folder chain scripts (root folder → leaf folder, top-down)
+3. Request scripts
+
+This is ideal for setting up authentication at the collection level — configure a token fetch once, and every request in the collection benefits.
 
 ### Pre-Request Scripts
 
 Pre-request scripts run before the main request is sent. The available action is **dependent request execution** — you select another request from the same collection, and Vaxtly fires it first. This is typically used to fetch an auth token that the main request needs.
 
-The request picker is searchable and shows each request's method badge and name. The current request is excluded from the list to prevent self-referencing.
+The request picker is searchable and shows each request's method badge and name.
 
 Pre-request scripts execute before variable substitution, so any variables set by the dependent request's post-response script are available to the main request.
+
+#### Only Fetch When Needed (Smart Token Caching)
+
+When configuring a pre-request script, you can enable **"Only fetch when needed"**. This adds two fields:
+
+- **Token variable** — the name of the variable holding the token (e.g., `api_token`)
+- **Expiry variable** — the name of the variable holding the token's expiry timestamp (e.g., `api_token_expires_at`)
+
+When enabled, Vaxtly checks before firing the dependent request:
+- Is the token variable set and non-empty?
+- Is the expiry timestamp still in the future (with a 30-second safety margin)?
+
+If both are true, the dependent request is **skipped** — the existing token is reused. This prevents unnecessary token fetches on every request.
+
+> [!TIP]
+> Pair this with a **Set Token Expiry** post-response script (see below) to automatically track when the token expires. The typical setup:
+> 1. Pre-request: fire "Get Token" request, with "Only fetch when needed" pointing to <code v-pre>api_token</code> and <code v-pre>api_token_expires_at</code>
+> 2. Post-response: Set Variable `body.access_token` → <code v-pre>api_token</code>
+> 3. Post-response: Set Token Expiry `body.expires_in` → <code v-pre>api_token_expires_at</code>
 
 ### Post-Response Scripts
 
 Post-response scripts run after a response is received. Each script rule extracts a value from the response and stores it as a **collection variable**. You can add multiple extraction rules.
 
-Each rule has two fields:
+There are two action types:
+
+#### Set Variable
+
+Extracts a raw value and stores it directly.
 
 - **Source** — where to extract the value from:
   - `body.path.to.value` — JSON dot-notation path (e.g., `body.data.token`, `body.items[0].id`)
   - `header.Header-Name` — response header value (case-insensitive lookup)
   - `status` — the HTTP status code as a string
 - **Target** — the collection variable name to store the value in
+
+#### Set Token Expiry
+
+Extracts a numeric `expires_in` value (in seconds) from the response and converts it to an **absolute Unix timestamp** (milliseconds). This is designed to work with the "Only fetch when needed" feature.
+
+For example, if the API responds with `{ "expires_in": 3600 }`, the script computes `Date.now() + 3600 * 1000` and stores that timestamp in the target variable.
+
+---
 
 Extracted values are sanitized: any <code v-pre>{{varName}}</code> patterns in the extracted value are stripped to prevent variable injection from malicious API responses.
 
