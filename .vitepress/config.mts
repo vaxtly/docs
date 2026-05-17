@@ -46,6 +46,7 @@ export default defineConfig({
       {
         text: 'Advanced',
         items: [
+          { text: 'AI Agent Integration', link: '/ai-agents' },
           { text: 'Remote Sync (Git)', link: '/remote-sync' },
           { text: 'Vault Integration', link: '/vault' },
           { text: 'Network Settings', link: '/network-settings' },
